@@ -1,0 +1,26 @@
+edition: 1.0.0
+name: sdevs-helloworld
+access: default
+
+services:
+  helloworld-service:
+    component: fc
+    props:
+      region: cn-shanghai
+      service:
+        name: helloworld-service
+        description: 'Python Hello World Service'
+      function:
+        name: helloworld-function
+        description: 'Python Hello World Function'
+        codeUri: './code'
+        timeout: 60
+        memorySize: 256
+        runtime: python3
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
